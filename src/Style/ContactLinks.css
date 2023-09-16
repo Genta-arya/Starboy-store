@@ -1,0 +1,51 @@
+.gradient-border {
+  width: 176px;
+  height: 176px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 0px solid transparent;
+  background-clip: content-box;
+  animation: changeColors 5s linear infinite;
+  -webkit-animation: changeColors 5s linear infinite;
+}
+
+@keyframes changeColors {
+  0% {
+    background: #f06;
+  }
+  25% {
+    background: #9f6;
+  }
+  50% {
+    background: #6f9;
+  }
+  75% {
+    background: #69f;
+  }
+  100% {
+    background: #f69;
+  }
+}
+
+.contact-headings {
+  position: relative;
+  background: black;
+  padding: 10px;
+  bottom: 100%;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 10px;
+  
+  z-index: 2;
+}
+.contact-headings::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
