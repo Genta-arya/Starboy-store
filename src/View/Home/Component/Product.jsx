@@ -45,6 +45,25 @@ function ProductLayout() {
     };
   }, []);
 
+  const sendWhatsAppMessage = (product) => {
+    const websiteURL = "https://starboy-studio.vercel.app/";
+    const message = `Hai, saya ingin memesan produk ${product.title} dengan detail sebagai berikut:
+  
+  Store: ${websiteURL}
+  Nama Produk: ${product.title}
+  Deskripsi: ${product.description}
+  Harga: ${product.price}
+  
+  Silakan konfirmasi pesanan ini.`;
+
+    const phoneNumber = "6282220082754";
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.location.href = whatsappURL;
+  };
+
   return (
     <div
       className="container mx-auto mt-12 bg-gray-200 rounded-full p-8 border-2 pb-16"
@@ -106,17 +125,14 @@ function ProductLayout() {
               <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
               <p className="text-gray-600 mb-4">{product.description}</p>
               <p className="text-lg font-semibold">{product.price}</p>
-              <ScrollLink
-                to="contactSection"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={2500}
+              <a
+                onClick={() => sendWhatsAppMessage(product)}
+                target="_blank"
                 className="bg-gray-700 text-white px-4 py-2 mt-4 rounded-md hover:bg-gray-800 absolute bottom-4 right-4 animate-none hover:scale-110 transition-all delay-75"
                 style={{ cursor: "pointer" }}
               >
                 Order Now
-              </ScrollLink>
+              </a>
             </div>
           ))}
         </div>
@@ -133,7 +149,7 @@ function ProductLayout() {
               className="bg-gray-700 text-white px-4 py-2 mt-5 rounded-full hover:bg-gray-800 absolute top-3 right-8"
               onClick={closeModal}
             >
-              <FontAwesomeIcon icon={faTimes} /> 
+              <FontAwesomeIcon icon={faTimes} />
             </button>
           </div>
         </div>
